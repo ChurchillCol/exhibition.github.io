@@ -1,0 +1,527 @@
+.div-bank {
+    width: 100%;
+    height: 1px;
+    display: flex;
+}
+
+head {
+    height: 0px;
+}
+
+html {
+    cursor: url("./Images/tricursor.cur"), auto;
+}
+
+body {
+    margin: 0px;
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    background-color: #f8f5eb;
+    font-family: "Gill Sans MT", sans-serif;
+    cursor: url("./Images/tricursor.cur"), auto;
+    overflow: hidden;
+}
+
+* {
+    cursor: inherit;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: .8s linear;
+    pointer-events: none;
+}
+
+.homepage {
+    visibility: visible;
+}
+.main-exhibition {
+    visibility: visible; 
+    transition: transform .3s ease-out, 
+    opacity .5s linear, visibility 1s linear;
+}
+
+.homeboxfake {
+    width: 80vw;
+    height: 38vw;
+    position: absolute;
+    left: 10vw;
+    top: 15vh;
+    background-color: #e9e2d3;
+    transition: 1s;
+}
+.homeboxfake.main{
+    width: 38vw;
+    height: 38vw;
+    position: absolute;
+    left: 10vw;
+    top: 15vh;
+    background-color: #e9e2d3;
+}
+.homebox {
+    width: 80vw;
+    height: 38vw;
+    left: 10vw;
+    top: 15vh;
+    position: absolute;
+    transition: transform .3s ease-out, 
+    opacity .3s linear, visibility 1s linear;
+    transition-delay: .1s;
+}
+.hometitle{
+    width: 100%;
+    height: 30%;
+    top: calc(15vh+2vw);
+    transition: transform .3s ease-out, 
+    opacity .5s linear, visibility 1s linear;
+}
+.exhibitionname{
+    font-size: 3em;
+    padding-top: 4%;
+    padding-left: 5vw;
+}
+.exdescription {
+    padding-left: 5vw;
+    padding-top: 1%;
+}
+.home1 {
+    width: 20vw;
+    height: 20vw;
+    position: absolute;
+    left: 13.3vw;
+    top: calc(15vh + 15vw);
+    transition: transform .3s ease-out, 
+    opacity .3s linear, visibility 1s linear;
+}
+.home1:hover {
+    transform: scale(1.05);
+}
+.home1.tomainimg {
+    transform: translateY(-13vw) translateX(-1.3vw) scale(1.7);
+    transform-origin: top left;
+}
+
+.home2 {
+    width: 20vw;
+    height: 20vw;
+    position: absolute;
+    left: 40vw;
+    top: calc(15vh + 15vw);
+    transition: transform .3s ease-out, 
+    opacity .3s linear, visibility 1s linear;
+}
+.home2:hover {
+    transform: scale(1.05);
+}
+.home2.tomainimg {
+    transform: translateY(-13vw) translateX(-28vw) scale(1.7);
+    transform-origin: top left;
+}
+.home3 {
+    width: 20vw;
+    height: 20vw;
+    position: absolute;
+    left: 66.6vw;
+    top: calc(15vh + 15vw);
+    transition: transform .3s ease-out, 
+    opacity .3s linear, visibility 1s linear;
+}
+.home3:hover {
+    transform: scale(1.05);
+}
+.home3.tomainimg {
+    transform: translateY(-13vw) translateX(-54.6vw) scale(1.7);
+    transform-origin: top left;
+}
+.side-barfake {
+    width: 20vw;
+    height: 100%;
+    left: 100vw;
+    position: absolute;
+    background-color: #bac6d0;
+    transition: transform .3s ease-out;
+}
+.side-barfake.comein {
+    transform: translateX(-20vw);
+}
+.tab-topfake {
+    width: 15vw;
+    height: 20vh;
+    right: -15vw;
+    top: 15vh;
+    position: absolute;
+    background-color: #a3b3c1;
+    transition: transform .2s ease-out;
+}
+
+.tab-midfake {
+    width: 15vw;
+    height: 20vh;
+    right: -15vw;
+    top: calc((15vh + 38vw - 20vh - 15vh)/2 + 15vh);
+    position: absolute;
+    background-color: #a3b3c1;
+    transition: transform .2s ease-out;
+}
+
+.tab-bottomfake {
+    width: 15vw;
+    height: 20vh;
+    right: -15vw;
+    top: calc(15vh + 38vw - 20vh);
+    position: absolute;
+    background-color: #a3b3c1;
+    transition: transform .2s ease-out;
+}
+
+.tabin {
+    transform: translateX(-15vw);
+}
+
+.back-framefake {
+    width: 38vw;
+    height: 38vw;
+    left: -38vw;
+    top: 15vh;
+    position: absolute;
+    background-color: #e9e2d3;
+    transition: transform .2s ease-out;
+}
+.back-framefake.comein {
+    transform: translateX(6.5vw);
+}
+
+
+.fullimagecontainer {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s linear;
+}
+.fullimage {
+    position: absolute;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+.full {
+    visibility: visible;
+    opacity: 1;
+    background-color: #2f3e2f;
+}
+
+.main-frame {
+    width: 38vw;
+    height: 38vw;
+    left: 10vw;
+    top: 15vh;
+    position: absolute;
+    background-color: #e9e2d3;
+}
+
+.back-frame {
+    width: 38vw;
+    height: 38vw;
+    left: -31.5vw;
+    top: 15vh;
+    position: absolute;
+    background-color: #e9e2d3;
+}
+
+p {
+    margin: 0;
+}
+
+.title-text {
+    width: 27.5vw;
+    height: 15vh;
+    left: 50vw;
+    top: 25vh;
+    position: absolute;
+    color: #2f3e2f;
+    transition: .8s linear;
+}
+#work-name {
+    font-size: 2em;
+}
+#artist-name {
+    font-size: 1em;
+    font-style: italic;
+    padding-top: 10px;
+}
+
+.info-text {
+    width: 27.5vw;
+    height: 40vh;
+    left: 50vw;
+    bottom: calc(100vh - (15vh + 38vw));
+    position: absolute;
+    font-size: small;
+    transition: .8s linear;
+}
+#info {
+    padding-right: 10px;
+    font-size: 1.1em;
+}
+
+
+.side-bar {
+    width: 20vw;
+    height: 100%;
+    left: 80vw;
+    position: absolute;
+    background-color: #bac6d0;
+    flex-grow: 1;
+}
+
+.tab-top {
+    width: 15vw;
+    height: 20vh;
+    right: 0vw;
+    top: 15vh;
+    position: absolute;
+    background-color: #a3b3c1;
+}
+
+.tab-mid {
+    width: 15vw;
+    height: 20vh;
+    right: 0vw;
+    top: calc((15vh + 38vw - 20vh - 15vh)/2 + 15vh);
+    position: absolute;
+    background-color: #a3b3c1;
+}
+
+.tab-bottom {
+    width: 15vw;
+    height: 20vh;
+    right: 0vw;
+    top: calc(15vh + 38vw - 20vh);
+    position: absolute;
+    background-color: #a3b3c1;
+}
+
+.fullscreen {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0%;
+}
+
+.img-main {
+    width: 34vw;
+    height: 34vw;
+    position: absolute;
+    top: calc(15vh + 2vw);
+    left: 12vw;
+    transition: .6s cubic-bezier(.8,-0.29,.59,.95);
+}
+.img-main:hover {
+    transform: scale(1.05);
+}
+.main-filler {
+    width: 34vw;
+    height: 34vw;
+    position: absolute;
+    top: calc(15vh + 2vw);
+    left: 12vw;
+    visibility: hidden;
+}
+.img-main.side {
+    /*position is left: -29.5vw*/
+    transform: translateX(-41.5vw);
+}
+.img-main.tod1 {
+    transform: translateX(74vw) translateY(calc(1vh - 2vw)) scale(0.294118); 
+    transform-origin: top left;
+}
+.img-main.tod2 {
+    transform: translateX(74vw) scale(0.294118); 
+    transform-origin: left;
+}
+.img-main.tod3 {
+    transform: translateX(74vw) translateY(calc((100vh - (15vh + 2vw) - 34vw) - (100vh - (14vh + 38vw)))) scale(0.294118); 
+    transform-origin: bottom left;
+}
+
+.back {
+    width: 34vw;
+    height: 34vw;
+    position: absolute;
+    top: calc(15vh + 2vw);
+    left: -29.5vw;
+    transition: .6s cubic-bezier(.8,-0.29,.59,.95);
+}
+.back:hover {
+    transform: translateX(3vw);
+}
+.back-filler {
+    width: 34vw;
+    height: 34vw;
+    position: absolute;
+    top: calc(15vh + 2vw);
+    left: -29.5vw;
+    visibility: hidden;
+}
+.back.side {
+    transform: translateX(-41.5vw);
+}
+.back.tomain {
+    transform: translateX(41.5vw);
+}
+
+.back-further {
+    width: 34vw;
+    height: 34vw;
+    position: absolute;
+    top: calc(15vh + 2vw);
+    left: -40vw;
+    transition: .6s cubic-bezier(0,.97,.52,1.13);
+}
+.back-further.side {
+    transform: translate(10.5vw);
+}
+
+.img-side1 {
+    width: 10vw;
+    height: 10vw;
+    position: absolute;
+    top: 16vh;
+    left: 86vw;
+    transition: transform .3s ease-out, 
+    opacity .3s linear, visibility 1s linear;
+    transition-delay: .1s;
+}
+.img-side1:hover {
+    transform: translateY(-10px);
+}
+
+.img-side1.main {
+    transform: translateX(-74vw) translateY(calc(2vw - 1vh)) scale(3.4); 
+    transform-origin: top left;
+}
+
+.d1-filler {
+    width: 10vw;
+    height: 10vw;
+    position: absolute;
+    top: 16vh;
+    left: 86vw;
+    visibility: hidden;
+}
+
+
+.img-side2 {
+    width: 10vw;
+    height: 10vw;
+    position: absolute;
+    top: calc((15vh + 38vw - 20vh - 15vh)/2 + 16vh);
+    left: 86vw;
+    transition: transform .3s ease-out, 
+    opacity .3s linear, visibility 1s linear;
+    transition-delay: .1s;
+    }
+.img-side2:hover {
+    transform: translateY(-10px);
+}
+.img-side2.main {
+    transform: translateX(-74vw) scale(3.4); 
+    transform-origin: left;
+}
+
+.d2-filler {
+    width: 10vw;
+    height: 10vw;
+    position: absolute;
+    top: calc((15vh + 38vw - 20vh - 15vh)/2 + 16vh);
+    left: 86vw;
+    visibility: hidden;
+}
+
+.img-side3 {
+    width: 10vw;
+    height: 10vw;
+    position: absolute;
+    bottom: calc(100vh - (14vh + 38vw));
+    left: 86vw;
+    transition: transform .3s ease-out,
+    opacity .3s linear, visibility 1s linear;
+    transition-delay: .1s;
+}
+.img-side3:hover {
+    transform: translateY(-10px);
+}
+.img-side3.main {
+    transform: translateX(-74vw) translateY(calc((100vh - (14vh + 38vw)) - (100vh - (15vh + 2vw) - 34vw))) scale(3.4); 
+    transform-origin: bottom left;
+}
+
+.d3-filler {
+    width: 10vw;
+    height: 10vw;
+    position: absolute;
+    bottom: calc(100vh - (14vh + 38vw));
+    left: 86vw;
+    visibility: hidden;
+}
+
+.sidetext1 {
+    position: absolute;
+    top: 35vh;
+    height: 3vh;
+    left: 85vw;
+    font-size: small;
+    font-style: italic;
+    transition: .5s linear;
+    color: #1e3c57;
+}
+
+.sidetext2 {
+    position: absolute;
+    top: calc((15vh + 38vw - 20vh - 15vh)/2 + 35vh);
+    left: 85vw;
+    font-size: small;
+    font-style: italic;
+    transition: .5s linear;
+    color: #1e3c57;
+}
+
+
+.sidetext3 {
+    position: absolute;
+    top: calc(15vh + 38vw - 20vh + 20vh);
+    left: 85vw;
+    font-size: small;
+    font-style: italic;
+    transition: .5s linear;
+    color: #1e3c57;
+}
+
+.div-bank {
+    width: 1px;
+    height: 1px;
+    visibility: hidden;
+}
+#img-bank{
+    width: 1px;
+    height: 1px;
+    visibility: hidden;
+}
