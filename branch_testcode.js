@@ -396,7 +396,11 @@ async function goback() {
     let newinfoset = await getInfo(previousstate[1]); //returns [newinfo, newtitle, newartist]
     info.innerHTML = newinfoset[0];
     workname.innerHTML = newinfoset[1];
-    artistname.innerHTML = newinfoset[2];
+    if (newinfoset[2] == "nil") {
+        artistname.innerHTML = "";
+    } else {
+        artistname.innerHTML = newinfoset[2];
+    }
         
     //move back to previous state
     await transition(d0, "to"+previousstate[5]);
