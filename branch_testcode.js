@@ -138,7 +138,7 @@ function hiderest(g, l) {
 	}
 };
 
-function replaceimg(i, s) {
+async function replaceimg(i, s) {
     var sideimg = document.getElementById(i);
     sideimg.src=s;
 };
@@ -244,10 +244,10 @@ async function beginexhibition(g) {
 
     console.log("nextset is", nextset);
 
-    replaceimg("d0", currentimg);
-    replaceimg("d1", nextset[0]);
-    replaceimg("d2", nextset[1]);
-    replaceimg("d3", nextset[2]); 
+    await replaceimg("d0", currentimg);
+    await replaceimg("d1", nextset[0]);
+    await replaceimg("d2", nextset[1]);
+    await replaceimg("d3", nextset[2]); 
 
     //document.getElementById("main-exhibition").style.visibility="visible";
     await transition(mex, "hidden");
@@ -324,11 +324,11 @@ async function animd(g) {
     await transitionmultiple([[g, "hidden"], [d0, "hidden"], [b0, "hidden"]]);
     
     //switch to new set of images
-    replaceimg("d0", thisimg);
-    replaceimg("b0", backimg);
-    replaceimg("d1", realnext[0]);
-    replaceimg("d2", realnext[1]);
-    replaceimg("d3", realnext[2]); 
+    await replaceimg("d0", thisimg);
+    await replaceimg("b0", backimg);
+    await replaceimg("d1", realnext[0]);
+    await replaceimg("d2", realnext[1]);
+    await replaceimg("d3", realnext[2]); 
 
     //make info boxes visible
     await transition(box2, "hidden");
@@ -410,11 +410,11 @@ async function goback() {
     
     await transitionmultiple([[d0, "hidden"], [b0, "hidden"], [b1, "hidden"]]);
     
-    replaceimg("b0", previousstate[0]);
-    replaceimg("d0", previousstate[1]);
-    replaceimg("d1", previousstate[2]);
-    replaceimg("d2", previousstate[3]);
-    replaceimg("d3", previousstate[4]);
+    await replaceimg("b0", previousstate[0]);
+    await replaceimg("d0", previousstate[1]);
+    await replaceimg("d1", previousstate[2]);
+    await replaceimg("d2", previousstate[3]);
+    await replaceimg("d3", previousstate[4]);
     sidetext1.innerHTML=previousstate[7];
     sidetext2.innerHTML=previousstate[8];
     sidetext3.innerHTML=previousstate[9];
