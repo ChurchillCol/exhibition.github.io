@@ -18,7 +18,7 @@ body {
     min-width: 100%;
     display: flex;
     background-color: #f8f5eb;
-    font-family: "Gill Sans MT", sans-serif;
+    font-family: "Gill Sans MT", Helvetica, ui-sans-serif, Arial, sans-serif;
     cursor: url("./Images/tricursor.cur"), auto;
     overflow: hidden;
 }
