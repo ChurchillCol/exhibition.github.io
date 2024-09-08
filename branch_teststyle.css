@@ -267,6 +267,11 @@ p {
     font-style: italic;
     padding-top: 10px;
 }
+#year-name {
+    font-size: 1em;
+    padding-top: 10px;
+}
+
 
 .info-text {
     width: 27.5vw;
@@ -274,7 +279,10 @@ p {
     left: 50vw;
     bottom: calc(100vh - (15vh + 38vw));
     position: absolute;
-    font-size: small;
+    font-size: .9em;
+    line-height: 1.5;
+    text-align: justify;
+    text-justify: inter-word;
     transition: .8s linear;
 }
 #info {

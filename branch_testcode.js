@@ -1,7 +1,7 @@
 const alld = ["d1", "d2", "d3"];
 const allh = ["h1", "h2", "h3"];
 const allg = ["i1", "i2", "i3", "i4", "i5", "i6", "i7", "i8", "i9"];
-const atts = ["artist", "decade", "location", "medium", "style"];
+const atts = ["artist", "decade", "location", "medium", "style", "decade"];
 
 var currentid = ""
 
@@ -120,6 +120,9 @@ async function choose (m) { //m is the filename of current main image
             case 'style':
                 document.getElementById(img).innerHTML= "More:  "+"&nbsp"+specificatt;
                 break;
+            case 'decade':
+                document.getElementById(img).innerHTML= "More from the:  "+"&nbsp"+specificatt;
+                break;
             default:
                 document.getElementById(img).innerHTML= "Wildcard!";
                 break;
@@ -197,8 +200,9 @@ async function getInfo(img) {
     newinfo = thisentry["text"];
     newtitle = thisentry["name"];
     newartist = thisentry["artist"];
-    console.log("newinfo is", newinfo, newtitle, newartist);
-    return [newinfo, newtitle, newartist];
+    newyear = thisentry["year"];
+    console.log("newinfo is", newinfo, newtitle, newartist, newyear);
+    return [newinfo, newtitle, newartist, newyear];
 }
 
 async function beginexhibition(g) {
@@ -223,12 +227,14 @@ async function beginexhibition(g) {
     const info = document.getElementById("info");
     const workname = document.getElementById("work-name");
     const artistname = document.getElementById("artist-name");
+    const yearname = document.getElementById("year-name");
 
     startimg = g.getAttribute("src");
-    let newinfoset = await getInfo(startimg); //returns [newinfo, newtitle, newartist]
+    let newinfoset = await getInfo(startimg); //returns [newinfo, newtitle, newartist, newyear]
     info.innerHTML = newinfoset[0];
     workname.innerHTML = newinfoset[1];
     artistname.innerHTML = newinfoset[2];
+    yearname.innerHTML = newinfoset[3];
 
     await transition(htitle, "hidden");
     hiderest(g, allh);
@@ -284,6 +290,7 @@ async function animd(g) {
     const info = document.getElementById("info");
     const workname = document.getElementById("work-name");
     const artistname = document.getElementById("artist-name");
+    const yearname = document.getElementById("year-name");
 
     history.push([b0.getAttribute("src"), d0.getAttribute("src"), 
         d1.getAttribute("src"), d2.getAttribute("src"), d3.getAttribute("src"), 
@@ -310,6 +317,7 @@ async function animd(g) {
     info.innerHTML = newinfoset[0];
     workname.innerHTML = newinfoset[1];
     artistname.innerHTML = newinfoset[2];
+    yearname.innerHTML = newinfoset[3];
 
     hiderest(g, alld); //change this function to something that takes await
     await transition(b0, "side");
@@ -376,6 +384,7 @@ async function goback() {
     const info = document.getElementById("info");
     const workname = document.getElementById("work-name");
     const artistname = document.getElementById("artist-name");
+    const yearname = document.getElementById("year-name");
 
     let previousstate = history.pop();
 
@@ -393,7 +402,7 @@ async function goback() {
         [d1, "hidden"], [d2, "hidden"], [d3, "hidden"]]);  
 
     //set new info details
-    let newinfoset = await getInfo(previousstate[1]); //returns [newinfo, newtitle, newartist]
+    let newinfoset = await getInfo(previousstate[1]); //returns [newinfo, newtitle, newartist, newyear]
     info.innerHTML = newinfoset[0];
     workname.innerHTML = newinfoset[1];
     if (newinfoset[2] == "nil") {
@@ -401,6 +410,7 @@ async function goback() {
     } else {
         artistname.innerHTML = newinfoset[2];
     }
+    yearname.innerHTML = newinfoset[3];
         
     //move back to previous state
     await transition(d0, "to"+previousstate[5]);
