@@ -279,7 +279,7 @@ p {
     left: 50vw;
     bottom: calc(100vh - (15vh + 38vw));
     position: absolute;
-    font-size: .9em;
+    font-size: .85em;
     line-height: 1.5;
     text-align: justify;
     text-justify: inter-word;
