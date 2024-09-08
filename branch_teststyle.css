@@ -107,7 +107,7 @@ body {
     position: absolute;
     left: 13.3vw;
     top: calc(15vh + 15vw);
-    transition: transform .3s ease-out, 
+    transition: transform .5s ease-out, 
     opacity .3s linear, visibility 1s linear;
 }
 .home1:hover {
@@ -124,7 +124,7 @@ body {
     position: absolute;
     left: 40vw;
     top: calc(15vh + 15vw);
-    transition: transform .3s ease-out, 
+    transition: transform .5s ease-out, 
     opacity .3s linear, visibility 1s linear;
 }
 .home2:hover {
@@ -140,7 +140,7 @@ body {
     position: absolute;
     left: 66.6vw;
     top: calc(15vh + 15vw);
-    transition: transform .3s ease-out, 
+    transition: transform .5s ease-out, 
     opacity .3s linear, visibility 1s linear;
 }
 .home3:hover {
@@ -156,7 +156,7 @@ body {
     left: 100vw;
     position: absolute;
     background-color: #bac6d0;
-    transition: transform .3s ease-out;
+    transition: transform .5s ease-out;
 }
 .side-barfake.comein {
     transform: translateX(-20vw);
@@ -168,7 +168,7 @@ body {
     top: 15vh;
     position: absolute;
     background-color: #a3b3c1;
-    transition: transform .2s ease-out;
+    transition: transform .3s ease-out;
 }
 
 .tab-midfake {
@@ -178,7 +178,7 @@ body {
     top: calc((15vh + 38vw - 20vh - 15vh)/2 + 15vh);
     position: absolute;
     background-color: #a3b3c1;
-    transition: transform .2s ease-out;
+    transition: transform .3s ease-out;
 }
 
 .tab-bottomfake {
@@ -188,7 +188,7 @@ body {
     top: calc(15vh + 38vw - 20vh);
     position: absolute;
     background-color: #a3b3c1;
-    transition: transform .2s ease-out;
+    transition: transform .3s ease-out;
 }
 
 .tabin {

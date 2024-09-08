@@ -1,7 +1,7 @@
 const alld = ["d1", "d2", "d3"];
 const allh = ["h1", "h2", "h3"];
 const allg = ["i1", "i2", "i3", "i4", "i5", "i6", "i7", "i8", "i9"];
-const atts = ["artist", "decade", "location", "medium", "style", "decade"];
+const atts = ["artist", "decade", "location", "medium", "style"];
 
 var currentid = ""
 
@@ -13,7 +13,6 @@ async function parse_tojson() { // parses the entry data into json format
         const csvText = await response.text();
         const parsedData = Papa.parse(csvText, { header: true });
         entries = parsedData.data;  // Assign to global 'entries'
-        console.log("parsed", entries);
     } catch (err) {
         console.error('Error:', err);
     }
@@ -56,7 +55,6 @@ function stopstartclick(n) {
 async function matchatts (l, n) { 
     await parse_tojson();
     let attrjson = entries;
-    console.log("entries are", entries[entries.findIndex(v => v.filename == './Images/t29.png')]["text"]);
     let nextlist = {}
     for (let a=0; a < l.length; a++) {
         let thisa = l[a];
@@ -92,12 +90,10 @@ async function choose (m) { //m is the filename of current main image
 
     let realnext = []
     for (let x=0; x < 3; x++) {
-        console.log("nextimglist is", nextimglist);
         if (nextimglist.length < 3) {
-            console.log("nextimglist too short! Pushing random images")
+            //console.log("nextimglist too short! Pushing random images")
             for (let i=0; i<(3-nextimglist.length); i++) {
                 nextimglist.push(["random image", "./Images/t"+Math.floor(Math.random()*50)+".png"]);
-                console.log("pushed");
             };
         };
         nextimg = nextimglist[x][1];
@@ -129,7 +125,6 @@ async function choose (m) { //m is the filename of current main image
         }   
 
     }
-    console.log("realnext is", realnext);
     return realnext; 
 };
 
@@ -153,7 +148,6 @@ function transition(elem, transclass) {
       }
       elem.addEventListener("transitionend", handleTransitionEnd, { once: true });
       elem.classList.toggle(transclass);
-      console.log(elem.getAttribute("id")," promise")
     });
 };
 
@@ -201,7 +195,6 @@ async function getInfo(img) {
     newtitle = thisentry["name"];
     newartist = thisentry["artist"];
     newyear = thisentry["year"];
-    console.log("newinfo is", newinfo, newtitle, newartist, newyear);
     return [newinfo, newtitle, newartist, newyear];
 }
 
@@ -249,8 +242,6 @@ async function beginexhibition(g) {
 
     let nextset = await choose(currentimg);
 
-    console.log("nextset is", nextset);
-
     await replaceimg("d0", currentimg);
     await replaceimg("d1", nextset[0]);
     await replaceimg("d2", nextset[1]);
@@ -261,6 +252,8 @@ async function beginexhibition(g) {
     document.getElementById("homepage").style.visibility="hidden";
 
     stopstartclick(true);
+
+    return
 }
 
 ///////////////////
@@ -297,7 +290,7 @@ async function animd(g) {
         d1.getAttribute("src"), d2.getAttribute("src"), d3.getAttribute("src"), 
         g.getAttribute("id"), g.getAttribute("src"),
         sidetext1.innerHTML, sidetext2.innerHTML, sidetext3.innerHTML]);
-    console.log(history);
+
     if (history.length > 200) {history.shift()};
 
 	var thisimg = g.getAttribute("src");
@@ -349,21 +342,17 @@ async function animd(g) {
     await transitionmultiple([[g, "main"], [d0, "side"], [b0, "side"]])
     await transitionmultiple([[d0, "hidden"], [b0, "hidden"]]);
    
-    //make side images visible
-    await transition(d1, "hidden");
-    await transition(d2, "hidden");
-    await transition(d3, "hidden");
-    
-    //make side text visible
-    await transition(sidetext1, "hidden");
-    await transition(sidetext2, "hidden");
-    await transition(sidetext3, "hidden");
+    //make side images and text visible
+    await transitionmultiple([[d1, "hidden"], [sidetext1, "hidden"]]);
+    await transitionmultiple([[d2, "hidden"], [sidetext2, "hidden"]]);
+    await transitionmultiple([[d3, "hidden"], [sidetext3, "hidden"]]);
 
     f0.style.visibility="hidden";
     f1.style.visibility="hidden";
 
     stopstartclick(true);
-    console.log("done");
+
+    return
 };
 
 async function goback() {
@@ -421,6 +410,8 @@ async function goback() {
     await transition(b0, "tomain");
     await transition(b1, "side");
 
+    await transitionmultiple([[box2, "hidden"], [box3, "hidden"]]);
+
     //show filler elements
     f0.style.visibility="visible";
     f1.style.visibility="visible";
@@ -437,19 +428,18 @@ async function goback() {
     sidetext2.innerHTML=previousstate[8];
     sidetext3.innerHTML=previousstate[9];
 
-    await transition(b0, "tomain");
-    await transition(b1, "side");
+    await transitionmultiple([[b0, "tomain"], [b1, "side"]]);
     await transition(b1, "hidden");
     await transition(d0, "to"+previousstate[5]); 
     await transition(d0, "hidden");
     
     await transitionmultiple([[d1, "hidden"], [d2, "hidden"], [d3, "hidden"], [b0, "hidden"],
-        [sidetext1, "hidden"], [sidetext2, "hidden"], [sidetext3, "hidden"],
-        [box2, "hidden"], [box3, "hidden"]]);
+        [sidetext1, "hidden"], [sidetext2, "hidden"], [sidetext3, "hidden"]]);
     
     //hide filler elements
     f0.style.visibility="hidden";
     f1.style.visibility="hidden";
     document.getElementById(previousstate[5]+"-filler").style.visibility="hidden";
-    console.log("done");
+
+    return
 };
