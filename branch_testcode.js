@@ -232,6 +232,7 @@ async function beginexhibition(g) {
     startimg = g.getAttribute("src");
     let newinfoset = await getInfo(startimg); //returns [newinfo, newtitle, newartist, newyear]
     info.innerHTML = newinfoset[0];
+    document.getElementById("box3").scrollTop = 0;
     workname.innerHTML = newinfoset[1];
     artistname.innerHTML = newinfoset[2];
     yearname.innerHTML = newinfoset[3];
@@ -315,9 +316,11 @@ async function animd(g) {
      //set new info details
     let newinfoset = await getInfo(thisimg); //returns [newinfo, newtitle, newartist]
     info.innerHTML = newinfoset[0];
+    box3.scrollTop = 0;
     workname.innerHTML = newinfoset[1];
     artistname.innerHTML = newinfoset[2];
     yearname.innerHTML = newinfoset[3];
+    
 
     hiderest(g, alld); //change this function to something that takes await
     await transition(b0, "side");
@@ -403,6 +406,7 @@ async function goback() {
 
     //set new info details
     let newinfoset = await getInfo(previousstate[1]); //returns [newinfo, newtitle, newartist, newyear]
+    box3.scrollTop = 0;
     info.innerHTML = newinfoset[0];
     workname.innerHTML = newinfoset[1];
     if (newinfoset[2] == "nil") {
