@@ -419,7 +419,7 @@ p {
     position: absolute;
     top: 16vh;
     left: 86vw;
-    transition: transform .3s ease-out, 
+    transition: transform .5s ease-in-out, 
     opacity .3s linear, visibility 1s linear;
     transition-delay: .1s;
 }
@@ -448,7 +448,7 @@ p {
     position: absolute;
     top: calc((15vh + 38vw - 20vh - 15vh)/2 + 16vh);
     left: 86vw;
-    transition: transform .3s ease-out, 
+    transition: transform .5s ease-in-out, 
     opacity .3s linear, visibility 1s linear;
     transition-delay: .1s;
     }
@@ -475,7 +475,7 @@ p {
     position: absolute;
     bottom: calc(100vh - (14vh + 38vw));
     left: 86vw;
-    transition: transform .3s ease-out,
+    transition: transform .5s ease-in-out,
     opacity .3s linear, visibility 1s linear;
     transition-delay: .1s;
 }
