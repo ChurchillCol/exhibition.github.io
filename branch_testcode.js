@@ -219,7 +219,7 @@ async function getInfo(img) {
 async function loadhome() {
     if (mobileCheck()) {
         document.getElementById("exhibitionname").innerHTML = "Sorry, Mobile browsers are not supported! Please switch to a desktop browser to experience this exhibition.";
-        document.getElementById("exhibitionname").style.fontSize = "1.5em";
+        document.getElementById("exhibitionname").style.fontSize = "2.5em";
         document.getElementById("exhibitionname").style.backgroundColor = "#e9e2d3";
         document.getElementById("exdescription").innerHTML = "";
         document.getElementById("sbf").style.visibility = "hidden";
@@ -230,12 +230,15 @@ async function loadhome() {
         await transition_remove(document.getElementById("hb"), "hidden");
         return;
     } else {
-    await transition_remove(document.getElementById("hbf"), "hidden");
-    await transition_remove(document.getElementById("hb"), "hidden");
-    await transition_remove(document.getElementById("h1"), "hidden");
-    await transition_remove(document.getElementById("h2"), "hidden");
-    await transition_remove(document.getElementById("h3"), "hidden");
-    return;
+        document.getElementById("h1").src = "./Images/t"+Math.floor(Math.random()*59)+".png" //edit depending on no. entries
+        document.getElementById("h2").src = "./Images/t"+Math.floor(Math.random()*59)+".png" //edit depending on no. entries
+        document.getElementById("h3").src = "./Images/t"+Math.floor(Math.random()*59)+".png" //edit depending on no. entries
+        await transition_remove(document.getElementById("hbf"), "hidden");
+        await transition_remove(document.getElementById("hb"), "hidden");
+        await transition_remove(document.getElementById("h1"), "hidden");
+        await transition_remove(document.getElementById("h2"), "hidden");
+        await transition_remove(document.getElementById("h3"), "hidden");
+        return;
     }
 }
 
