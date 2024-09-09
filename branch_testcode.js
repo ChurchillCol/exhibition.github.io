@@ -219,6 +219,8 @@ async function getInfo(img) {
 async function loadhome() {
     if (mobileCheck()) {
         document.getElementById("exhibitionname").innerHTML = "Sorry, Mobile browsers are not supported! Please switch to a desktop browser to experience this exhibition.";
+        document.getElementById("exhibitionname").style.fontSize = "1.5em";
+        document.getElementById("exhibitionname").style.backgroundColor = "#e9e2d3";
         document.getElementById("exdescription").innerHTML = "";
         document.getElementById("sbf").style.visibility = "hidden";
         document.getElementById("tab1f").style.visibility = "hidden";
