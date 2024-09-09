@@ -15,16 +15,16 @@
 
 <body>
 	<div class="homepage" id="homepage">
-		<div class="homeboxfake" id="hbf"></div>
-		<div class="homebox" id="hb">
+		<div class="homeboxfake hidden" id="hbf"></div>
+		<div class="homebox hidden" id="hb">
 			<div class="hometitle" id="htitle">
 				<p class="exhibitionname">CHURCHILL COLLEGE</p>
 				<p class="exdescription"> Click on any image to enter the exhibition </p>
 			</div>		
 		</div>
-		<img class="home1" id="h1" src="./Images/t8.png" onclick="beginexhibition(this)">
-		<img class="home2" id="h2" src="./Images/t0.png" onclick="beginexhibition(this)">
-		<img class="home3" id="h3" src="./Images/t10.png" onclick="beginexhibition(this)">
+		<img class="home1 hidden" id="h1" src="./Images/t8.png" onclick="beginexhibition(this)">
+		<img class="home2 hidden" id="h2" src="./Images/t0.png" onclick="beginexhibition(this)">
+		<img class="home3 hidden" id="h3" src="./Images/t10.png" onclick="beginexhibition(this)">
 
 		<div class="side-barfake" id="sbf"></div>
 		<div class="tab-topfake" id="tab1f"></div>
@@ -86,6 +86,13 @@
 		</div>
 
 	</div>
+
+	<script>
+		window.addEventListener("load", function() {
+		  loadhome();
+		  console.log("loadhome");
+		});
+	</script>
 	
 </body>
 

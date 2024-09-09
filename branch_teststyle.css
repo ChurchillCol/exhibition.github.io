@@ -51,6 +51,8 @@ body {
 
 .homepage {
     visibility: visible;
+    transition: transform .3s ease-out, 
+    opacity 1s linear, visibility 1s linear;
 }
 .main-exhibition {
     visibility: visible; 
@@ -65,9 +67,13 @@ body {
     left: 10vw;
     top: 15vh;
     background-color: #e9e2d3;
-    transition: 1s;
+    transition: transform .3s ease-out, 
+    opacity .5s linear, visibility 1s linear,
+    width .5s ease-out, 
+    height .5s ease-out;
 }
-.homeboxfake.main{
+
+.hbftomain{
     width: 38vw;
     height: 38vw;
     position: absolute;
@@ -75,6 +81,7 @@ body {
     top: 15vh;
     background-color: #e9e2d3;
 }
+
 .homebox {
     width: 80vw;
     height: 38vw;
@@ -82,7 +89,7 @@ body {
     top: 15vh;
     position: absolute;
     transition: transform .3s ease-out, 
-    opacity .3s linear, visibility 1s linear;
+    opacity .5s linear, visibility 1s linear;
     transition-delay: .1s;
 }
 .hometitle{
@@ -108,7 +115,7 @@ body {
     left: 13.3vw;
     top: calc(15vh + 15vw);
     transition: transform .5s ease-out, 
-    opacity .3s linear, visibility 1s linear;
+    opacity .5s linear, visibility 1s linear;
 }
 .home1:hover {
     transform: scale(1.05);
@@ -125,7 +132,7 @@ body {
     left: 40vw;
     top: calc(15vh + 15vw);
     transition: transform .5s ease-out, 
-    opacity .3s linear, visibility 1s linear;
+    opacity .5s linear, visibility 1s linear;
 }
 .home2:hover {
     transform: scale(1.05);
@@ -141,7 +148,7 @@ body {
     left: 66.6vw;
     top: calc(15vh + 15vw);
     transition: transform .5s ease-out, 
-    opacity .3s linear, visibility 1s linear;
+    opacity .5s linear, visibility 1s linear;
 }
 .home3:hover {
     transform: scale(1.05);

@@ -142,12 +142,25 @@ async function replaceimg(i, s) {
 };
 
 function transition(elem, transclass) {
+    console.log("transitioning", elem, transclass)
+    return new Promise((resolve, reject) => {
+      function handleTransitionEnd() {
+        resolve(elem);
+        console.log("transitioned", elem, transclass);
+      }
+      elem.addEventListener("transitionend", handleTransitionEnd, { once: true });
+      elem.classList.toggle(transclass);
+    });
+};
+
+function transition_remove(elem, transclass) {
+    console.log("transitioning", elem, transclass)
     return new Promise((resolve, reject) => {
       function handleTransitionEnd() {
         resolve(elem);
       }
       elem.addEventListener("transitionend", handleTransitionEnd, { once: true });
-      elem.classList.toggle(transclass);
+      elem.classList.remove(transclass);
     });
 };
 
@@ -170,8 +183,6 @@ function transition(elem, transclass) {
 };
 
 ///////////////////
-
-var elem = document.documentElement;
 
 /* View in fullscreen */
 var elem = document.documentElement;
@@ -196,6 +207,15 @@ async function getInfo(img) {
     newartist = thisentry["artist"];
     newyear = thisentry["year"];
     return [newinfo, newtitle, newartist, newyear];
+}
+
+
+async function loadhome() {
+    await transition_remove(document.getElementById("hbf"), "hidden");
+    await transition_remove(document.getElementById("hb"), "hidden");
+    await transition_remove(document.getElementById("h1"), "hidden");
+    await transition_remove(document.getElementById("h2"), "hidden");
+    await transition_remove(document.getElementById("h3"), "hidden");
 }
 
 async function beginexhibition(g) {
@@ -233,7 +253,7 @@ async function beginexhibition(g) {
     await transition(htitle, "hidden");
     hiderest(g, allh);
     await transition(g, "tomainimg");
-    await transition(hbf, "main");
+    await transition(hbf, "hbftomain");
     await transition(sbf, "comein");
     await transition(tab1f, "tabin");
     await transition(tab2f, "tabin");
