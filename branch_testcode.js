@@ -218,8 +218,12 @@ async function getInfo(img) {
 
 async function loadhome() {
     if (mobileCheck()) {
-        document.getElementById("exhibitionname").innerHTML = "Sorry, Mobile browsers are not supported!"
-        await transition_remove(document.getElementById("hbf"), "hidden");
+        document.getElementById("exhibitionname").innerHTML = "Sorry, Mobile browsers are not supported!";
+        document.getElementById("sbf").style.visibility = "hidden";
+        document.getElementById("tab1f").style.visibility = "hidden";
+        document.getElementById("tab2f").style.visibility = "hidden";
+        document.getElementById("tab3f").style.visibility = "hidden";
+        document.getElementById("bff").style.visibility = "hidden";
         await transition_remove(document.getElementById("hb"), "hidden");
         return;
     } else {
