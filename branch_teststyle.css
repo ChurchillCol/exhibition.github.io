@@ -55,7 +55,7 @@ body {
 .main-exhibition {
     visibility: visible; 
     transition: transform .3s ease-out, 
-    opacity .5s linear, visibility 1s linear;
+    opacity 1s linear, visibility 1s linear;
 }
 
 .homeboxfake {
