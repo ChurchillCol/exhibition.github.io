@@ -1,6 +1,6 @@
 @font-face {
-	font-family: '33535gillsansmt';
-	src: url('./33535gillsansmt.woff') format('woff');
+	font-family: 'gillsansmt';
+	src: url('./gillsansmt.woff') format('woff');
 }
 
 .div-bank {
@@ -23,7 +23,7 @@ body {
     min-width: 100%;
     display: flex;
     background-color: #f8f5eb;
-    font-family: "Gill Sans MT", "33535gillsansmt", Helvetica, ui-sans-serif, Arial, sans-serif;
+    font-family: "Gill Sans MT", "gillsansmt", Helvetica, ui-sans-serif, Arial, sans-serif;
     cursor: url("./Images/tricursor.cur"), auto;
     overflow: hidden;
 }
