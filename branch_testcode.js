@@ -57,16 +57,36 @@ function fullimg(f) {
 function stopstartclick(n) { 
     switch(n){
         case false: 
+            document.getElementById("b0").style.pointerEvents = 'none';
             document.getElementById("d0").style.pointerEvents = 'none';
             document.getElementById("d1").style.pointerEvents = 'none';
             document.getElementById("d2").style.pointerEvents = 'none';
             document.getElementById("d3").style.pointerEvents = 'none';
             break;
         case true:
+            document.getElementById("b0").style.pointerEvents = 'auto';
             document.getElementById("d0").style.pointerEvents = 'auto';
             document.getElementById("d1").style.pointerEvents = 'auto';
             document.getElementById("d2").style.pointerEvents = 'auto';
             document.getElementById("d3").style.pointerEvents = 'auto';
+            break;
+        default:
+            console.log('invalid argument');
+            break;
+    }   
+};
+
+function stopstartclick_home(n) { 
+    switch(n){
+        case false: 
+            document.getElementById("h1").style.pointerEvents = 'none';
+            document.getElementById("h2").style.pointerEvents = 'none';
+            document.getElementById("h3").style.pointerEvents = 'none';
+            break;
+        case true:
+            document.getElementById("h1").style.pointerEvents = 'auto';
+            document.getElementById("h2").style.pointerEvents = 'auto';
+            document.getElementById("h3").style.pointerEvents = 'auto';
             break;
         default:
             console.log('invalid argument');
@@ -236,6 +256,8 @@ async function getInfo(img) {
 
 
 async function loadhome() {
+    //disable click functionality
+    stopstartclick_home(false);
     if (mobileCheck()) {
         document.getElementById("exhibitionname").innerHTML = "Sorry, Mobile browsers are not supported! Please switch to a desktop browser to experience this exhibition.";
         document.getElementById("exhibitionname").style.fontSize = "2.5em";
@@ -247,10 +269,12 @@ async function loadhome() {
         document.getElementById("tab3f").style.visibility = "hidden";
         document.getElementById("bff").style.visibility = "hidden";
         await transition_remove(document.getElementById("hb"), "hidden");
+        stopstartclick_home(true);
         return;
     } else {
         let shuffled = await shuffle();
-        document.getElementById("h1").src = "./Images/t"+shuffled[0]+".png" 
+        //document.getElementById("h1").src = "./Images/t"+shuffled[0]+".png" 
+        document.getElementById("h1").src = "./Images/t"+"31"+".png" 
         document.getElementById("h2").src = "./Images/t"+shuffled[1]+".png" 
         document.getElementById("h3").src = "./Images/t"+shuffled[2]+".png" 
         await transition_remove(document.getElementById("hbf"), "hidden");
@@ -258,6 +282,7 @@ async function loadhome() {
         await transition_remove(document.getElementById("h1"), "hidden");
         await transition_remove(document.getElementById("h2"), "hidden");
         await transition_remove(document.getElementById("h3"), "hidden");
+        stopstartclick_home(true);
         return;
     }
 }
