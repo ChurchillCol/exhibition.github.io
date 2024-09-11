@@ -290,6 +290,7 @@ async function loadhome() {
 async function beginexhibition(g) {
     //disable click functionality
     stopstartclick(false);
+    stopstartclick_home(false);
     openFullscreen();    
 
     //objects to transition
