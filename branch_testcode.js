@@ -173,14 +173,6 @@ async function choose (m) { //m is the filename of current main image
     return realnext; 
 };
 
-function hiderest(g, l) {
-    for (let i of l) {
-		if (i !== g.id) {
-			document.getElementById(i).classList.toggle("hidden");
-		} else {}
-	}
-};
-
 async function replaceimg(i, s) {
     var sideimg = document.getElementById(i);
     sideimg.src=s;
@@ -225,6 +217,20 @@ function transition_remove(elem, transclass) {
             elemlist[l][0].classList.toggle(elemlist[l][1]);
         }
     });
+};
+
+async function hiderest(g, l) {
+    let tohide = []; //[[document.getElementById(hx), "hidden"], [..]]
+    for (let i of l) {
+		if (i !== g.id) {
+			tohide.push([document.getElementById(i), "hidden"]);
+		} else {}
+	}
+    await transitionmultiple(tohide);
+    for (h of tohide) {
+        h[0].src = './Images/transparentsquare.png';
+    }
+    return
 };
 
 ///////////////////
@@ -376,6 +382,7 @@ async function animd(g) {
     const artistname = document.getElementById("artist-name");
     const yearname = document.getElementById("year-name");
 
+    //push current state into history
     history.push([b0.getAttribute("src"), d0.getAttribute("src"), 
         d1.getAttribute("src"), d2.getAttribute("src"), d3.getAttribute("src"), 
         g.getAttribute("id"), g.getAttribute("src"),
@@ -383,14 +390,13 @@ async function animd(g) {
 
     if (history.length > 200) {history.shift()};
 
+    //set filler images
 	var thisimg = g.getAttribute("src");
     var backimg = d0.getAttribute("src");
-
-    //set filler images
     f0.src=thisimg;
     f1.src=backimg;
    
-    //transition in sequence
+    //hide elements in sequence
     await transitionmultiple([[box2, "hidden"], [box3, "hidden"]]);
     await transitionmultiple([[sidetext1, "hidden"], [sidetext2, "hidden"], [sidetext3, "hidden"]]);
 
@@ -405,7 +411,7 @@ async function animd(g) {
     yearname.innerHTML = newinfoset[3];
     
 
-    hiderest(g, alld); //change this function to something that takes await
+    await hiderest(g, alld); //hides the non chosen images
     await transition(b0, "side");
     await transition(d0, "side");
     await transition(g, "main");
