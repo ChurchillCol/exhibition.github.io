@@ -596,9 +596,15 @@ async function goback() {
 
 ///////////////////////////////////////
 
+async function allentriestomain(g) {
+    await transition(document.getElementById(g), 'allentriestomain');
+}
+
+
 async function allentries() {
     const mex = document.getElementById("main-exhibition");
     const all_entries = document.getElementById("all-entries");
+    const aec = document.getElementById("aec");
     
     await transition(mex, "hidden");
     await parse_tojson();
@@ -607,14 +613,29 @@ async function allentries() {
     for (let e = 0; e < everything.length; e++) {
         console.log(everything[e].filename);
         let newdiv = document.createElement("div");
-        newdiv.style.width = '200px';
-        newdiv.style.height = '200px';
+        newdiv.style.width = '100%';
+        newdiv.style.height = '300px';
+        newdiv.style.position = 'relative';
         let newimg = document.createElement("img");
-        newimg.style.width = '195px';
-        newimg.style.height = '195px';
+        newimg.style.width = '250px';
+        newimg.style.height = '250px';
+        newimg.style.objectFit = 'contain'; 
+        newimg.style.transition = 'transform .5s ease-out, opacity .5s linear, visibility 1s linear'; 
         newimg.src = everything[e].filename;
+        newimg.className = 'allentries-class';  // Set a common class to all images
+        newimg.id = 'allentries image-' + e; 
+        /*
+        newimg.onclick = function() {
+            allentriestomain('allentries image-' + e);  // Pass specific data (e.g., filename or object)
+        };
+        */
         newdiv.appendChild(newimg);
-        all_entries.appendChild(newdiv);
+        aec.appendChild(newdiv);
     }
     await transition(all_entries, "hidden");
 }
+
+
+
+//////////////////////////////////////////
+
