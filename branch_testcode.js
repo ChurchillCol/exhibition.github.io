@@ -233,6 +233,16 @@ async function hiderest(g, l) {
     return
 };
 
+////
+
+async function revealall(l) {
+    for (let i of l) {
+        document.getElementById(i).classList.remove("hidden");
+    };
+    console.log("all revealed");
+    return
+}
+
 ///////////////////
 
 /* View in fullscreen */
@@ -279,10 +289,9 @@ async function loadhome() {
         return;
     } else {
         let shuffled = await shuffle();
-        //document.getElementById("h1").src = "./Images/t"+shuffled[0]+".png" 
-        document.getElementById("h1").src = "./Images/t"+"31"+".png" 
-        document.getElementById("h2").src = "./Images/t"+shuffled[1]+".png" 
-        document.getElementById("h3").src = "./Images/t"+shuffled[2]+".png" 
+        document.getElementById("h1").src = "./Images/t"+shuffled[0]+".png"; 
+        document.getElementById("h2").src = "./Images/t"+shuffled[1]+".png"; 
+        document.getElementById("h3").src = "./Images/t"+shuffled[2]+".png"; 
         await transition_remove(document.getElementById("hbf"), "hidden");
         await transition_remove(document.getElementById("hb"), "hidden");
         await transition_remove(document.getElementById("h1"), "hidden");
@@ -313,12 +322,15 @@ async function beginexhibition(g) {
     const bff = document.getElementById("bff");
     const currentimg = g.getAttribute("src");
     const mex = document.getElementById("main-exhibition");
+    const hompage = document.getElementById("homepage");
     const info = document.getElementById("info");
     const workname = document.getElementById("work-name");
     const artistname = document.getElementById("artist-name");
     const yearname = document.getElementById("year-name");
 
     startimg = g.getAttribute("src");
+
+    // get entry for selected image
     let newinfoset = await getInfo(startimg); //returns [newinfo, newtitle, newartist, newyear]
     info.innerHTML = newinfoset[0];
     document.getElementById("box3").scrollTop = 0;
@@ -326,8 +338,9 @@ async function beginexhibition(g) {
     artistname.innerHTML = newinfoset[2];
     yearname.innerHTML = newinfoset[3];
 
+    // transition elements
     await transition(htitle, "hidden");
-    hiderest(g, allh);
+    await hiderest(g, allh);
     await transition(g, "tomainimg");
     await transition(hbf, "hbftomain");
     await transition(sbf, "comein");
@@ -336,6 +349,7 @@ async function beginexhibition(g) {
     await transition(tab3f, "tabin");
     await transition(bff, "comein");
 
+    // replace images
     let nextset = await choose(currentimg);
 
     await replaceimg("d0", currentimg);
@@ -344,13 +358,54 @@ async function beginexhibition(g) {
     await replaceimg("d3", nextset[2]); 
 
     //document.getElementById("main-exhibition").style.visibility="visible";
-    await transition(mex, "hidden");
-    document.getElementById("homepage").style.visibility="hidden";
+    
+    await transition(mex, "hidden");  
+    await transition(homepage, "hidden");
 
+    // transition elements back
+    await transition(htitle, "hidden");
+    await transition(g, "tomainimg");
+    await transition(hbf, "hbftomain");
+    await transition(sbf, "comein");
+    await transition(tab1f, "tabin");
+    await transition(tab2f, "tabin");
+    await transition(tab3f, "tabin");
+    await transition(bff, "comein");
+    
     stopstartclick(true);
+    stopstartclick_home(true);
 
     return
 }
+
+//////////////////
+
+async function gohome() {
+    const mex = document.getElementById("main-exhibition");
+    const homepage = document.getElementById("homepage");
+    const h1 = document.getElementById("h1");
+    const h2 = document.getElementById("h2");
+    const h3 = document.getElementById("h3");
+    const b0 = document.getElementById("b0");
+    
+    stopstartclick(false);
+    stopstartclick_home(false);
+
+    history.length = 0
+
+    let shuffled = await shuffle();
+    document.getElementById("h1").src = "./Images/t"+shuffled[0]+".png"; 
+    document.getElementById("h2").src = "./Images/t"+shuffled[1]+".png"; 
+    document.getElementById("h3").src = "./Images/t"+shuffled[2]+".png";
+    await revealall(allh);
+    await transition(mex, "hidden");
+    b0.src = './Images/transparentsquare.png';
+    await transition(homepage, "hidden");
+
+    stopstartclick_home(true);
+
+}
+
 
 ///////////////////
 
