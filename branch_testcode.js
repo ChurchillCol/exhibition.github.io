@@ -302,6 +302,9 @@ async function loadhome() {
     }
 }
 
+let history = [];
+//syntax of history: [[b0, d0, d1, d2, d3, lastclickedid, lastclickedsrc, sidetext1, sidetext2, sidetext3], [...]]
+
 async function beginexhibition(g) {
     //disable click functionality
     stopstartclick(false);
@@ -406,11 +409,7 @@ async function gohome() {
 
 }
 
-
 ///////////////////
-
-let history = [];
-//syntax of history: [[b0, d0, d1, d2, d3, lastclickedid, lastclickedsrc, sidetext1, sidetext2, sidetext3], [...]]
 
 async function animd(g) {
 
@@ -457,7 +456,7 @@ async function animd(g) {
 
     let realnext = await choose(thisimg);
 
-     //set new info details
+    //set new info details
     let newinfoset = await getInfo(thisimg); //returns [newinfo, newtitle, newartist]
     info.innerHTML = newinfoset[0];
     box3.scrollTop = 0;
@@ -594,3 +593,28 @@ async function goback() {
 
     return
 };
+
+///////////////////////////////////////
+
+async function allentries() {
+    const mex = document.getElementById("main-exhibition");
+    const all_entries = document.getElementById("all-entries");
+    
+    await transition(mex, "hidden");
+    await parse_tojson();
+    let everything = entries;
+    console.log(everything);
+    for (let e = 0; e < everything.length; e++) {
+        console.log(everything[e].filename);
+        let newdiv = document.createElement("div");
+        newdiv.style.width = '200px';
+        newdiv.style.height = '200px';
+        let newimg = document.createElement("img");
+        newimg.style.width = '195px';
+        newimg.style.height = '195px';
+        newimg.src = everything[e].filename;
+        newdiv.appendChild(newimg);
+        all_entries.appendChild(newdiv);
+    }
+    await transition(all_entries, "hidden");
+}

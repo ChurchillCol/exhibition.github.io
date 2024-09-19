@@ -59,6 +59,14 @@ body {
     transition: transform .3s ease-out, 
     opacity 1s linear, visibility 1s linear;
 }
+.all-entries {
+    visibility: visible;
+    transition: transform .3s ease-out, 
+    opacity 1s linear, visibility 1s linear;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
 .homeboxfake {
     width: 80vw;
