@@ -1,4 +1,5 @@
 from PIL import Image
+import os
 
 def make_square_transparent(image_path, output_path):
     # Open the original image
@@ -49,22 +50,25 @@ def resize_if_larger(image_path, output_path, max_size=2000):
         print("pass ", image_path)
         return
         
+dname = "px-conversions/"
+directory = os.fsencode(dname)
+    
 def resizeall():
-    for i in range(60):
-        resize_if_larger("Images/t"+str(i)+".png", "Images/t"+str(i)+".png")
-        print(i, " done")
+    for file in os.listdir(directory):
+        filename = os.fsdecode(file)
+        resize_if_larger(dname + filename, dname + filename)
+        print(filename, " done")
     return
 
 def convertthemall():
-    for i in range(60):
-        make_square_transparent("Images/newpngs/t"+str(i)+".png", "Images/newpngs/converted/t"+str(i)+".png")
+    for file in os.listdir(directory):
+        filename = os.fsdecode(file)
+        make_square_transparent(dname + filename, dname + filename)
+        print(file, "done")
     return
 
 
-imgin = "Images/new/t20.png"
-imgout = "Images/old/test.png"
-
-convertthemall()
+resizeall()
     
 
 
