@@ -331,6 +331,13 @@ p {
     font-size: 1.1em;
 }
 
+.home-icon {
+    width: 3vw;
+    height: 3vw;
+    left: 10vw;
+    top: 7vh;
+    position: absolute;
+}
 
 .side-bar {
     width: 20vw;
