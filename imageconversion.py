@@ -1,5 +1,7 @@
 from PIL import Image
 import os
+import pymupdf
+
 
 def make_square_transparent(image_path, output_path):
     # Open the original image
@@ -27,7 +29,7 @@ def make_square_transparent(image_path, output_path):
     square_img.save(output_path)
     return
 
-def resize_if_larger(image_path, output_path, max_size=2000):
+def resize_if_larger(image_path, output_path, max_size=600):
     # Open the original image
     img = Image.open(image_path).convert("RGBA")
     
@@ -67,8 +69,34 @@ def convertthemall():
         print(file, "done")
     return
 
+dnamepdf = "pdf/A4/"
+directorypdf = os.fsencode(dnamepdf)
+
+def pdftopng(pdfpath, imgpath):
+    print("started running")
+    doc = pymupdf.open(pdfpath)
+    page = doc.load_page(0)
+    pix = page.get_pixmap(dpi=300)
+    pix.save(imgpath)
+    print(pdfpath, "done")
+    return
+
+def convertpdf():
+    a=0
+    for file in os.listdir(directorypdf):
+        filename = os.fsdecode(file)
+        pdftopng(dnamepdf+filename, dnamepdf+"A4"+"_img"+str(a)+".png")
+        a+=1
+    return
+
+
+#convertpdf()
+
+#pdftopng("pdf/A1/axo moller.pdf", "pdf/A1/test12.png")
 
 resizeall()
+
+#convertthemall()
     
 
 

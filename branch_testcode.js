@@ -45,7 +45,9 @@ async function shuffle() { //x is the number of images to take - usually 3
 function fullimg(f) {
     let fullimg = document.getElementById("fullimage")
     let container = document.getElementById("fullimagecontainer");
-    fullimg.src = f.getAttribute("src");
+    srcimg = f.getAttribute("src");
+    newsrc = srcimg.slice(9);
+    fullimg.src = "./Images/big/"+newsrc;
     container.classList.toggle("full");
     function leave() {
         container.classList.toggle("full");
