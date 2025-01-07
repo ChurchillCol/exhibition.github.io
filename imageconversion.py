@@ -29,7 +29,7 @@ def make_square_transparent(image_path, output_path):
     square_img.save(output_path)
     return
 
-def resize_if_larger(image_path, output_path, max_size=600):
+def resize_if_larger(image_path, output_path, max_size=2000):
     # Open the original image
     img = Image.open(image_path).convert("RGBA")
     
@@ -94,9 +94,9 @@ def convertpdf():
 
 #pdftopng("pdf/A1/axo moller.pdf", "pdf/A1/test12.png")
 
-resizeall()
+#resizeall()
 
-#convertthemall()
+convertthemall()
     
 
 
