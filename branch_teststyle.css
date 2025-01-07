@@ -337,6 +337,7 @@ p {
     bottom: 10vh;
     position: absolute;
     outline-style: solid;
+    outline-width: 2px;
     outline-color: #1e3c57;
     color: #1e3c57;
     text-align: center;
