@@ -304,6 +304,29 @@ async function loadhome() {
     }
 }
 
+async function showinfo() {
+    const infobox = document.getElementById("hib");
+    const homebox = document.getElementById("hb");
+    const h1 = document.getElementById("h1");
+    const h2 = document.getElementById("h2");
+    const h3 = document.getElementById("h3");
+    const icon = document.getElementById("info-icon");
+
+
+    if (infobox.classList.contains("hidden")) {
+        console.log('home first');
+        await transitionmultiple([[homebox, "hidden"], [h1, "hidden"], [h2, "hidden"], [h3, "hidden"]]);
+        await transition(infobox, "hidden");
+        icon.innerHTML = "Home";
+    } else {
+        console.log('info first');
+        await transition(infobox, "hidden");
+        await transitionmultiple([[homebox, "hidden"], [h1, "hidden"], [h2, "hidden"], [h3, "hidden"]]);
+        icon.innerHTML = "Info";
+    }
+    console.log("unhide");
+}
+
 let history = [];
 //syntax of history: [[b0, d0, d1, d2, d3, lastclickedid, lastclickedsrc, sidetext1, sidetext2, sidetext3], [...]]
 

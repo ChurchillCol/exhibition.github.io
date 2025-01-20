@@ -105,6 +105,53 @@ body {
     background-color: #e9e2d3;
 }
 
+.info-icon {
+    width: 3vw;
+    right: 10vw;
+    top: 8vh;
+    position: absolute;
+    outline-style: none;
+    background-color: #e9e2d3;
+    color: #343434;
+    text-align: center;
+    font-size: 1em;
+    padding: 0.4%;
+}
+.info-icon:hover {
+    background-color: #343434;
+    outline-style: solid;
+    outline-color: #e9e2d3;
+    color: #f8f5eb;
+}
+.homeinfobox {
+    display: flex;
+    width: 80vw;
+    height: 38vw;
+    left: 10vw;
+    top: 15vh;
+    position: absolute;
+    transition: transform .3s ease-out, 
+    opacity .5s linear, visibility 1s linear;
+    transition-delay: .1s;
+}
+
+.about-label {
+    position: relative;
+    left: 3vw;
+    bottom: 15vw;
+    font-weight: bold;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding-top: 5%;
+    padding-left: 5%;
+    font-size: 3.5em;
+}
+.home-info-text {
+    padding: 5%;
+    font-size: 1.5em;
+    line-height: 1.55;
+}
+
 .homebox {
     width: 80vw;
     height: 38vw;
@@ -137,6 +184,7 @@ body {
     padding-left: 3.5vw;
     padding-top: 2%;
 }
+
 .home1 {
     width: 20vw;
     height: 20vw;
