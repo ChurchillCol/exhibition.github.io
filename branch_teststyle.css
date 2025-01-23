@@ -116,6 +116,8 @@ body {
     text-align: center;
     font-size: 1em;
     padding: 0.4%;
+    transition: transform .5s ease-out, 
+    opacity .5s linear, visibility 1s linear;
 }
 .info-icon:hover {
     background-color: #343434;
@@ -234,6 +236,16 @@ body {
     transform: translateY(-13vw) translateX(-54.6vw) scale(1.7);
     transform-origin: top left;
 }
+
+.click-toenter {
+    position: absolute;
+    top: calc(15vh + 38.5vw);
+    right: 10vw;
+    color: #908a7f;
+    transition: transform .5s ease-out, 
+    opacity .5s linear, visibility 1s linear;
+}
+
 .side-barfake {
     width: 20vw;
     height: 100%;

@@ -64,6 +64,7 @@ function stopstartclick(n) {
             document.getElementById("d1").style.pointerEvents = 'none';
             document.getElementById("d2").style.pointerEvents = 'none';
             document.getElementById("d3").style.pointerEvents = 'none';
+            document.getElementById("home-icon").style.pointerEvents = 'none';
             break;
         case true:
             document.getElementById("b0").style.pointerEvents = 'auto';
@@ -71,6 +72,7 @@ function stopstartclick(n) {
             document.getElementById("d1").style.pointerEvents = 'auto';
             document.getElementById("d2").style.pointerEvents = 'auto';
             document.getElementById("d3").style.pointerEvents = 'auto';
+            document.getElementById("home-icon").style.pointerEvents = 'auto';
             break;
         default:
             console.log('invalid argument');
@@ -84,11 +86,13 @@ function stopstartclick_home(n) {
             document.getElementById("h1").style.pointerEvents = 'none';
             document.getElementById("h2").style.pointerEvents = 'none';
             document.getElementById("h3").style.pointerEvents = 'none';
+            document.getElementById("info-icon").style.pointerEvents = 'none';
             break;
         case true:
             document.getElementById("h1").style.pointerEvents = 'auto';
             document.getElementById("h2").style.pointerEvents = 'auto';
             document.getElementById("h3").style.pointerEvents = 'auto';
+            document.getElementById("info-icon").style.pointerEvents = 'auto';
             break;
         default:
             console.log('invalid argument');
@@ -296,9 +300,11 @@ async function loadhome() {
         document.getElementById("h3").src = "./Images/t"+shuffled[2]+".png"; 
         await transition_remove(document.getElementById("hbf"), "hidden");
         await transition_remove(document.getElementById("hb"), "hidden");
+        await transition_remove(document.getElementById("info-icon"), "hidden");
         await transition_remove(document.getElementById("h1"), "hidden");
         await transition_remove(document.getElementById("h2"), "hidden");
         await transition_remove(document.getElementById("h3"), "hidden");
+        await transition_remove(document.getElementById("click-toenter"), "hidden");
         stopstartclick_home(true);
         return;
     }
@@ -343,6 +349,8 @@ async function beginexhibition(g) {
     const h1 = document.getElementById("h1");
     const h2 = document.getElementById("h2");
     const h3 = document.getElementById("h3");
+    const iicon = document.getElementById("info-icon");
+    const clicktoenter = document.getElementById("click-toenter");
     const sbf = document.getElementById("sbf");
     const tab1f = document.getElementById("tab1f");
     const tab2f = document.getElementById("tab2f");
@@ -367,7 +375,7 @@ async function beginexhibition(g) {
     yearname.innerHTML = newinfoset[3];
 
     // transition elements
-    await transition(htitle, "hidden");
+    await transitionmultiple([[htitle, "hidden"],[iicon, "hidden"],[clicktoenter, "hidden"]]);
     await hiderest(g, allh);
     await transition(g, "tomainimg");
     await transition(hbf, "hbftomain");
@@ -415,6 +423,8 @@ async function gohome() {
     const h2 = document.getElementById("h2");
     const h3 = document.getElementById("h3");
     const b0 = document.getElementById("b0");
+    const iicon = document.getElementById("info-icon");
+    const clicktoenter = document.getElementById("click-toenter");
     
     stopstartclick(false);
     stopstartclick_home(false);
@@ -428,7 +438,7 @@ async function gohome() {
     await revealall(allh);
     await transition(mex, "hidden");
     b0.src = './Images/transparentsquare.png';
-    await transition(homepage, "hidden");
+    await transitionmultiple([[homepage, "hidden"], [iicon, "hidden"], [clicktoenter, "hidden"]]);
 
     stopstartclick_home(true);
 
