@@ -745,7 +745,7 @@ p {
         width: 10vw;
         height: 10vw;
         position: absolute;
-        top: calc((15vh + 38vw - 20vh - 15vh)/2 + 17vh);
+        top: calc((15vh + 38vw - 20vh - 15vh)/2 + 16vh);
         left: 86vw;
         transition: transform .5s ease-in-out, 
         opacity .3s linear, visibility 1s linear;
@@ -755,7 +755,7 @@ p {
         transform: translateY(-10px);
     }
     .img-side2.main {
-        transform: translateX(-74vw) scale(3.4); 
+        transform: translateX(-74vw) translateY(1vh) scale(3.4); 
         transform-origin: left;
     }
     
@@ -764,7 +764,7 @@ p {
         width: 10vw;
         height: 10vw;
         position: absolute;
-        bottom: calc(100vh - (13vh + 38vw));
+        bottom: calc(100vh - (12vh + 38vw));
         left: 86vw;
         transition: transform .5s ease-in-out,
         opacity .3s linear, visibility 1s linear;
@@ -774,7 +774,7 @@ p {
         transform: translateY(-10px);
     }
     .img-side3.main {
-        transform: translateX(-74vw) translateY(calc((100vh - (13vh + 38vw)) - (100vh - (15vh + 2vw) - 34vw))) scale(3.4); 
+        transform: translateX(-74vw) translateY(calc((100vh - (12vh + 38vw)) - (100vh - (15vh + 2vw) - 34vw))) scale(3.4); 
         transform-origin: bottom left;
     }
     
