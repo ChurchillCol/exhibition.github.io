@@ -741,6 +741,25 @@ p {
         color: #1e3c57;
     }
 
+    .img-side2 {
+        width: 10vw;
+        height: 10vw;
+        position: absolute;
+        top: calc((15vh + 38vw - 20vh - 15vh)/2 + 17vh);
+        left: 86vw;
+        transition: transform .5s ease-in-out, 
+        opacity .3s linear, visibility 1s linear;
+        transition-delay: .1s;
+        }
+    .img-side2:hover {
+        transform: translateY(-10px);
+    }
+    .img-side2.main {
+        transform: translateX(-74vw) scale(3.4); 
+        transform-origin: left;
+    }
+    
+
     .img-side3 {
         width: 10vw;
         height: 10vw;
