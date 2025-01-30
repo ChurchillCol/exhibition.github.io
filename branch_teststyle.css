@@ -172,7 +172,7 @@ body {
     opacity .5s linear, visibility 1s linear;
 }
 .exhibitionname{
-    font-size: 3.3em;
+    font-size: 3.1em;
     padding-top: 4%;
     padding-left: 3.5vw;
 }
@@ -776,6 +776,34 @@ p {
     .img-side3.main {
         transform: translateX(-74vw) translateY(calc((100vh - (12vh + 38vw)) - (100vh - (15vh + 2vw) - 34vw))) scale(3.4); 
         transform-origin: bottom left;
+    }
+    
+    .title-text {
+        width: 27.5vw;
+        height: 15vh;
+        left: 50vw;
+        top: 22vh;
+        position: absolute;
+        color: #2f3e2f;
+        transition: .8s linear;
+    }
+
+    .home-icon {
+        width: 4vw;
+        left: 85vw;
+        bottom: 20vh;
+        position: absolute;
+        outline-style: solid;
+        outline-width: 2px;
+        outline-color: #1e3c57;
+        color: #1e3c57;
+        text-align: center;
+        font-size: small;
+        padding: 0.2%;
+    }
+    .home-icon:hover{
+        background-color: #1e3c57;
+        color: #bac6d0;
     }
     
 }
